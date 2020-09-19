@@ -49,3 +49,56 @@ as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
 as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
 ```
 
+## Problem 2
+
+Download the package containing the penguins dataset
+
+
+install.packages("palmerpenguins")
+
+Load the penguins dataset:
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+Description of the penguins dataset:
+
+There are 5 numeric variables, which are bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g and year, and 3 factors, which are species, island and sex.
+
+The mean of the bill_length_mm is `r mean(pull(penguins, bill_length_mm), na.rm = TRUE)`.
+
+The mean of the bill_depth_mm) is `r mean(pull(penguins, bill_depth_mm), na.rm = TRUE)`.
+
+The mean of the flipper_length_mm is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
+
+The mean of the body_mass_g is `r mean(pull(penguins, body_mass_g), na.rm = TRUE)`.
+
+The mean of the year is `r mean(pull(penguins, year), na.rm = TRUE)`.
+
+The range of the bill_length_mm is `r range(pull(penguins, bill_length_mm), na.rm = TRUE)`.
+
+The range of the bill_depth_mm is `r range(pull(penguins, bill_depth_mm), na.rm = TRUE)`.
+
+The range of the flipper_length_mm is `r range(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
+
+The range of the body_mass_g is `r range(pull(penguins, body_mass_g), na.rm = TRUE)`.
+
+The range of the year is `r range(pull(penguins, year), na.rm = TRUE)`.
+
+The size of the dataset is `r nrow(penguins)` * `r ncol(penguins)`.
+
+The value of the species is `r levels(pull(penguins, species))`.
+
+The value of the island is `r levels(pull(penguins, island))`.
+
+The value of the sex is `r levels(pull(penguins, sex))`.
+
+The scatter plot of flipper_length_mm (y) vs bill_length_mm (x)
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+```
+
+
